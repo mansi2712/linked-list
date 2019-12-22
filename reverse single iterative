@@ -1,0 +1,17 @@
+//reverse a single linked list iteratively
+void reversenode()
+{
+	node* temp=head;
+	node* h=temp->next;
+	node* temp1=h->next;
+	temp->next=NULL;
+	while(h->next!=NULL)
+	{
+		h->next=temp;
+		temp=h;
+		h=temp1;
+		temp1=temp1->next;
+	}
+	h->next=temp;
+	head=h;	
+}
