@@ -1,0 +1,37 @@
+//given 2 linked list in ascending order,merge list with resultant in ascending order
+node* mergeLists(node* head1, node* head2) 
+{
+    node* tempA;
+    node* tempB;
+    node* temp=NULL;
+    node* head=NULL;
+    if(head1->data<head2->data)
+    {
+        head=head1;
+        tempA=head1;
+        tempB=head2;
+    }
+    else
+    {
+        head=head2;
+        tempA=head2;
+        tempB=head1;
+    }
+    while(tempA->next!=NULL)
+    {
+        if(tempA->next->data<=tempB->data)
+        {
+            tempA=tempA->next;
+        }
+        else
+        {
+            temp=tempA->next;
+            tempA->next=tempB;
+            tempA=tempB;
+            tempB=temp;
+        }
+    }
+    if(tempA->next==NULL)
+        tempA->next=tempB;
+    return head;
+}
